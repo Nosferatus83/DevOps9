@@ -1,0 +1,14 @@
+# Просто пример использования item
+---
+- name: add several users
+  user:
+    name: "{{ item }}"
+    group: "wheel"
+    state: present
+  with_item:
+    - user1
+    - user2
+    - user3
+- name: install many packages
+  apt: name={{item}} state=installed
+  with_item:
